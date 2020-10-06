@@ -1,6 +1,14 @@
 const http = require('http');
-const routes = require('./routes');
+const express = require('express');
 
-const server = http.createServer(routes);
+const app = express();
 
-server.listen(3000);
+app.use('/product',(req, res, next) => {
+    res.send("<h1>Hello from /product </h1>")
+});
+
+app.use('/',(req, res, next) => {
+    res.send("<h1>Hello from / </h1>")
+});
+
+app.listen(3000);
