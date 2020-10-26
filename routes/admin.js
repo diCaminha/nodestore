@@ -1,3 +1,4 @@
+const path = require('path');
 const rootPath = require('../utils/paths');
 const express = require('express');
 
