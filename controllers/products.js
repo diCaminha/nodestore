@@ -1,3 +1,5 @@
+const products = [];
+
 exports.getAddProductPage = (req, res, next) => {
     res.render('add-product', {
         pageTitle: 'Add Product',
@@ -14,7 +16,6 @@ exports.postAddProduct = (req, res, next) => {
 }
 
 exports.getProducts = (req, res, next) => {
-    const products = adminData.products;
     res.render('shop', {
         prods: products,
         pageTitle: 'Shop',
