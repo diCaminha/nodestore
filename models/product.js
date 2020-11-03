@@ -1,36 +1,24 @@
-const fs = require('fs');
-const path = require('path');
+const Sequelize = require('sequelize')
 
-const Cart = require('./cart');
+const sequelize = require('../utils/database');
 
-const p = path.join(
-  path.dirname(process.mainModule.filename),
-  'data',
-  'products.json'
-);
+const Product = sequelize.define('product', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
+    title: Sequelize.STRING,
+    price: {
+        type: Sequelize.DOUBLE,
+        allowNull: false
+    },
+    imageUrl: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    description: Sequelize.STRING
+});
 
-module.exports = class Product {
-  constructor(id, title, imageUrl, description, price) {
-    this.id = id;
-    this.title = title;
-    this.imageUrl = imageUrl;
-    this.description = description;
-    this.price = price;
-  }
-
-  save() {
-  
-  }
-
-  static deleteById(id) {
-   
-  }
-
-  static fetchAll(cb) {
-   
-  }
-
-  static findById(id, cb) {
-    
-  }
-};
+module.exports = Product;
